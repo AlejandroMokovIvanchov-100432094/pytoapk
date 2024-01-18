@@ -30,7 +30,7 @@ class Alimento:
 
 class MiApp(App):
     def build(self):
-        Window.size = (800,1250)
+        Window.size = (800,1200)
         # Crea una caja vertical (BoxLayout)
         self.main_layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
         self.main_page = BoxLayout(orientation='vertical', spacing=10, padding=10)
@@ -44,7 +44,7 @@ class MiApp(App):
     def menu_principal(self):
         self.btn_infnut = Button(text='Consultar información de un alimento', on_press=self.pagina_informacion_nutricional)
         self.btn_recetas = Button(text='Hacer recetas', on_press=self.pagina_recetas)
-        self.btn_ratios = Button(text='Definir ratios de insulina', on_press=self.ratios_button_press)
+        self.btn_ratios = Button(text='Definir ratios de insulina', on_press=self.pag_ratios)
         self.main_page.add_widget(self.btn_infnut)
         self.main_page.add_widget(self.btn_recetas)
         self.main_page.add_widget(self.btn_ratios)
@@ -73,7 +73,7 @@ class MiApp(App):
         self.rect.size = instance.size
         self.rect.pos = instance.pos
 
-    def ratios_button_press(self, instance):
+    def pag_ratios(self, instance):
         self.main_layout.remove_widget(self.main_page)
         seccion = SeccionRatios(self.main_layout, self.main_page)
         seccion.pagina_principal()
