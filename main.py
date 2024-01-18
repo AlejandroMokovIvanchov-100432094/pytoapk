@@ -30,7 +30,7 @@ class Alimento:
 
 class MiApp(App):
     def build(self):
-        Window.size = (800,1250)
+        Window.size = (800,1200)
         # Crea una caja vertical (BoxLayout)
         self.main_layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
         self.main_page = BoxLayout(orientation='vertical', spacing=10, padding=10)
