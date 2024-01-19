@@ -39,8 +39,8 @@ class SeccionRecetas:
         self.back_btn = Button(text='Volver', on_press=partial(self.back_btn_recetas, self), height=self.back_btn_size[1], size_hint_y=None,
             background_color=(2,2,2,1), color = (0,0,0,1))
         self.layout_recetas.add_widget(self.back_btn)
-
-        self.layout_alimentos = GridLayout(cols=1, spacing=10, height=(len(self.alimentos)+1) * self.back_btn_size[1],size_hint_y=None)
+        #(len(self.alimentos)+1) * self.back_btn_size[1]
+        self.layout_alimentos = GridLayout(cols=1, spacing=10, height= Window.height*0.1*(len(self.alimentos)),size_hint_y=None)
         self.scroll_view = ScrollView()
         for alimento in self.alimentos:
             self.button_text = alimento.nombre
@@ -60,8 +60,9 @@ class SeccionRecetas:
         with open("alimentos.csv", newline='\n') as csvfile:
             reader = csv.reader(csvfile, delimiter=',')
             for row in reader:
-                alimento = Alimento(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
-                self.alimentos.append(alimento)
+                if row:
+                    alimento = Alimento(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
+                    self.alimentos.append(alimento)
 
     def pagina_cantidades(self, instance):
         self.main_layout.remove_widget(self.layout_recetas)

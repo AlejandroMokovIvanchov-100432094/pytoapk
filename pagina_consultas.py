@@ -49,8 +49,9 @@ class SeccionConsultas:
         with open("alimentos.csv", newline='\n') as csvfile:
             reader = csv.reader(csvfile, delimiter=',')
             for row in reader:
-                alimento = Alimento(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
-                self.alimentos.append(alimento)
+                if row:
+                    alimento = Alimento(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
+                    self.alimentos.append(alimento)
 
     def consultar_info(self, alimento):
         back_btn_size = (self.main_layout.size[0] * 0.5, self.main_layout.size[1] * 0.1)
