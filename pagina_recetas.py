@@ -36,18 +36,20 @@ class SeccionRecetas:
 
         self.layout_recetas = GridLayout(cols=1, spacing=10)
 
-        self.back_btn = Button(text='Volver', on_press=partial(self.back_btn_recetas, self), height=self.back_btn_size[1], size_hint_y=None)
+        self.back_btn = Button(text='Volver', on_press=partial(self.back_btn_recetas, self), height=self.back_btn_size[1], size_hint_y=None,
+            background_color=(2,2,2,1), color = (0,0,0,1))
         self.layout_recetas.add_widget(self.back_btn)
 
-        self.layout_alimentos = GridLayout(cols=1, spacing=10, height=len(self.alimentos) * self.back_btn_size[1],size_hint_y=None)
+        self.layout_alimentos = GridLayout(cols=1, spacing=10, height=(len(self.alimentos)+1) * self.back_btn_size[1],size_hint_y=None)
         self.scroll_view = ScrollView()
         for alimento in self.alimentos:
             self.button_text = alimento.nombre
-            self.button = Button(text=self.button_text, height=self.back_btn_size[1] * 0.5, size_hint_y=None)
+            self.button = Button(text=self.button_text)
             self.layout_alimentos.add_widget(self.button)
             self.button.bind(on_press=lambda instance, a=alimento: self.seleccionar_alimento(a))
 
-        self.btn_cantidades = Button(text="Seleccionar cantidades", height=self.back_btn_size[1], size_hint_y=None,on_press=self.pagina_cantidades)
+        self.btn_cantidades = Button(text="Seleccionar cantidades", height=self.back_btn_size[1], size_hint_y=None,on_press=self.pagina_cantidades,
+            background_color=(2,2,2,1), color = (0,0,0,1))
         self.layout_recetas.add_widget(self.btn_cantidades)
         self.scroll_view.add_widget(self.layout_alimentos)
         self.layout_recetas.add_widget(self.scroll_view)
@@ -66,14 +68,16 @@ class SeccionRecetas:
         self.back_btn_size = (self.main_layout.size[0] * 0.5, self.main_layout.size[1] * 0.1)
         self.layout_totales = GridLayout(cols=2, height=self.back_btn_size[1] * 0.5 * 5 , size_hint_y =None)
 
-        self.layout_cantidades = GridLayout(cols = 1)
+        self.layout_cantidades = GridLayout(cols = 1, spacing=10)
         self.main_layout.add_widget(self.layout_cantidades)
 
         self.back_btn_size = (self.main_layout.size[0] * 0.5, self.main_layout.size[1] * 0.1)
-        self.back_btn_cant = Button(text='Volver', on_press=partial(self.back_btn_cantidades, self), height=self.back_btn_size[1],size_hint_y=None)
+        self.back_btn_cant = Button(text='Volver', on_press=partial(self.back_btn_cantidades, self), height=self.back_btn_size[1],size_hint_y=None,
+                                    background_color=(2,2,2,1), color = (0,0,0,1))
         self.layout_cantidades.add_widget(self.back_btn_cant)
 
-        self.btn_insulina = Button(text='Calcular insulina', on_press=self.calcular_insulina,height=self.back_btn_size[1]*0.5,size_hint_y=None)
+        self.btn_insulina = Button(text='Calcular insulina', on_press=self.calcular_insulina,height=self.back_btn_size[1]*0.5,size_hint_y=None,
+                                   background_color=(2,2,2,1), color = (0,0,0,1))
         self.layout_cantidades.add_widget(self.btn_insulina)
 
         self.layout_seleccion = GridLayout(cols=2, height = len(self.alimentos_seleccionados)*self.back_btn_size[1]*0.5,size_hint_y=None)
@@ -84,7 +88,8 @@ class SeccionRecetas:
             self.layout_seleccion.add_widget(self.label)
             self.layout_seleccion.add_widget(cantidad)
 
-        self.btn_calcular_totales = Button(text = "Calcular cantidades totales", height=self.back_btn_size[1]*0.5,size_hint_y=None, on_press = self.calcular_totales)
+        self.btn_calcular_totales = Button(text = "Calcular cantidades totales", height=self.back_btn_size[1]*0.5,size_hint_y=None, on_press = self.calcular_totales,
+                                           background_color=(2,2,2,1), color = (0,0,0,1))
         self.config_layout_totales()
 
         if self.btn_calcular_totales not in self.layout_cantidades.children:

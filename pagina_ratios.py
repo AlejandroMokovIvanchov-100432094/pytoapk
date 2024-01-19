@@ -32,7 +32,8 @@ class SeccionRatios:
         self.ratios_page = GridLayout(cols=1, spacing=10)
         self.main_layout.add_widget(self.ratios_page)
         back_btn_size = (self.main_layout.size[0] * 0.5, self.main_layout.size[1] * 0.1)
-        back_btn = Button(text='Volver', height=back_btn_size[1], size_hint_y=None, on_press = partial(self.boton_volver, self))
+        back_btn = Button(text='Volver', height=back_btn_size[1], size_hint_y=None, on_press = partial(self.boton_volver, self),
+                          background_color=(2,2,2,1), color = (0,0,0,1))
         self.ratios_page.add_widget(back_btn)
         self.leer_ratios(back_btn_size)
         self.definir_ratios_nuevos(back_btn_size)
@@ -42,7 +43,8 @@ class SeccionRatios:
         self.ratio_desayuno_nuevo = TextInput(hint_text='Ratio desayuno', multiline=False,height=back_btn_size[1] * 0.5, size_hint_y=None)
         self.ratio_comida_nuevo = TextInput(hint_text='Ratio comida', multiline=False,height=back_btn_size[1] * 0.5, size_hint_y=None)
         self.ratio_cena_nuevo = TextInput(hint_text='Ratio cena', multiline=False,height=back_btn_size[1] * 0.5, size_hint_y=None)
-        btn_save_ratios = Button(text='Guardar ratios nuevos', on_press=partial(self.guardar_ratios_nuevos, self), height=back_btn_size[1], size_hint_y=None)
+        btn_save_ratios = Button(text='Guardar ratios nuevos', on_press=partial(self.guardar_ratios_nuevos, self), height=back_btn_size[1], size_hint_y=None,
+                                 background_color=(2,2,2,1), color = (0,0,0,1))
         self.ratios_page.add_widget(ratios_nuevos)
         self.ratios_page.add_widget(self.ratio_desayuno_nuevo)
         self.ratios_page.add_widget(self.ratio_comida_nuevo)

@@ -33,7 +33,7 @@ class MiApp(App):
         Window.size = (800,1200)
         # Crea una caja vertical (BoxLayout)
         self.main_layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
-        self.main_page = BoxLayout(orientation='vertical', spacing=10, padding=10)
+        self.main_page = GridLayout(cols=1, spacing=10, padding=10)
         with self.main_layout.canvas.before:
             Color(0.65, 0.65, 0.65, 0.6)  # RGBA (valores entre 0 y 1)
             self.rect = Rectangle(size=self.main_layout.size, pos=self.main_layout.pos)
@@ -42,13 +42,19 @@ class MiApp(App):
         return self.main_layout
 
     def menu_principal(self):
-        self.btn_infnut = Button(text='Consultar información de un alimento', on_press=self.pagina_informacion_nutricional)
-        self.btn_recetas = Button(text='Hacer recetas', on_press=self.pagina_recetas)
-        self.btn_ratios = Button(text='Definir ratios de insulina', on_press=self.pag_ratios)
+        self.btn_infnut = Button(text='Consultar información de un alimento', on_press=self.pagina_informacion_nutricional, height = Window.height*0.1, size_hint_y =None)
+        self.btn_recetas = Button(text='Hacer recetas', on_press=self.pagina_recetas, height = Window.height*0.1, size_hint_y =None)
+        self.btn_ratios = Button(text='Definir ratios de insulina', on_press=self.pag_ratios, height = Window.height*0.1, size_hint_y =None)
+        self.btn_exit = Button(text='Salir', on_press=self.exit_app,height=Window.height * 0.1, size_hint_y=None,
+                               background_color=(2,2,2,1), color = (0,0,0,1))
         self.main_page.add_widget(self.btn_infnut)
         self.main_page.add_widget(self.btn_recetas)
         self.main_page.add_widget(self.btn_ratios)
+        self.main_page.add_widget(self.btn_exit)
         self.main_layout.add_widget(self.main_page)
+
+    def exit_app(self, instance):
+        App.get_running_app().stop()
 
     def pagina_recetas(self, instance):
         self.main_layout.remove_widget(self.main_page)

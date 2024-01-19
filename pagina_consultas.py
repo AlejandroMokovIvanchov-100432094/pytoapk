@@ -32,12 +32,13 @@ class SeccionConsultas:
         back_btn_size = (self.main_layout.size[0] * 0.5, self.main_layout.size[1] * 0.1)
         self.leer_alimentos()
         self.layout_lista_alimentos = GridLayout(cols= 1, spacing=10,height=(len(self.alimentos) + 1) * back_btn_size[1], size_hint_y=None)
-        self.back_btn = Button(text='Volver', on_press=self.boton_volver_lista_alimentos, height=back_btn_size[1],size_hint_y=None)
+        self.back_btn = Button(text='Volver', on_press=self.boton_volver_lista_alimentos, height=back_btn_size[1],size_hint_y=None,
+                               background_color=(2,2,2,1), color = (0,0,0,1))
         self.layout_lista_alimentos.add_widget(self.back_btn)
         self.scroll_view_lista_alimentos = ScrollView()
         for alimento in self.alimentos:
             self.button_text = alimento.nombre
-            self.button = Button(text=self.button_text, height=back_btn_size[1]*0.5, size_hint_y=None)
+            self.button = Button(text=self.button_text)
             self.button.bind(on_press=lambda instance, a=alimento: self.consultar_info(a))
             self.layout_lista_alimentos.add_widget(self.button)
         self.scroll_view_lista_alimentos.add_widget(self.layout_lista_alimentos)
@@ -57,7 +58,7 @@ class SeccionConsultas:
 
         self.layout_informacion_nutricional = GridLayout(cols = 1, rows = 3, spacing = 10)
         self.propiedades = GridLayout(cols=2, rows=10, spacing=10)
-        self.back_btn = Button(text='Volver', on_press=self.boton_volver_informacion, height=back_btn_size[1],
+        self.back_btn = Button(text='Volver', background_color=(2,2,2,1), color = (0,0,0,1), on_press=self.boton_volver_informacion, height=back_btn_size[1],
                                size_hint_y=None, size_hint_x = 1)
         self.layout_informacion_nutricional.add_widget(self.back_btn)
 
